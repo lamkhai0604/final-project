@@ -2,9 +2,7 @@ import React from "react";
 import { Carousel } from "react-bootstrap";
 import "./Banner.css";
 
-
 export default function Banner() {
-
   return (
     <div>
       {/* <section id="hero">
@@ -85,10 +83,10 @@ export default function Banner() {
             <div className="carousel-container mb-3">
               <div>
                 <div className="carousel-content">
-               <h2 className="animated fadeInDown">
+                  <h2 className="animated fadeInDown">
                     <span> Delicious </span> Restaurant
                   </h2>
-                 <p className="animated fadeInUp">
+                  <p className="animated fadeInUp">
                     Ut velit est quam dolor ad a aliquid qui aliquid.Sequi ea ut
                     et est quaerat sequi nihil ut aliquam.Occaecati alias
                     dolorem mollitia ut.Similique ea voluptatem.Esse doloremque

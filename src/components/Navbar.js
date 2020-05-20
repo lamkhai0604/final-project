@@ -1,49 +1,94 @@
 import React from "react";
-// import {
-//   Navbar,
-//   Nav,
-//   Form,
-//   FormControl,
-//   Button,
-// } from "react-bootstrap";
-import {useHistory} from "react-router-dom";
-import "./Navbar.css"
+import { useHistory, Link } from "react-router-dom";
+import { Breadcrumbs } from "@material-ui/core";
+import "./Navbar.css";
 
-export default function Navigation(props) {
+export default function Navigation() {
   const history = useHistory();
+
+  function handleClick(event) {
+    // event.preventDefault();
+    console.info("You clicked a breadcrumb.");
+  }
 
   return (
     <div>
-<section id="topbar" className="d-none d-lg-flex align-items-center fixed-top">
-    <div className="container text-right">
-      <i className="icofont-phone"></i> +1 2345 6789 10
-      <i className="icofont-clock-time icofont-rotate-180"></i> Mon-Sat: 11:00 AM - 23:00 PM
-    </div>
-  </section>
+      <section
+        id="topbar"
+        className="d-none d-lg-flex align-items-center fixed-top"
+      >
+        <div className="container text-right">
+          <i className="icofont-phone"></i> +1 2345 6789 10
+          <i className="icofont-clock-time icofont-rotate-180"></i> Mon-Sat:
+          11:00 AM - 23:00 PM
+        </div>
+      </section>
 
-       <header id="header" className="fixed-top d-flex align-items-center">
-    <div class="container d-flex align-items-center">
+      <header id="header" className="fixed-top d-flex align-items-center">
+        <div class="container d-flex align-items-center">
+          <div className="logo mr-auto">
+            <h1 className="text-light">
+              <a href="index.html">
+                <span>Delicious</span>
+              </a>
+            </h1>
+            {/* <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> */}
+          </div>
 
-      <div className="logo mr-auto">
-        <h1 className="text-light"><a href="index.html"><span>Delicious</span></a></h1>
-      {/* <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> */}
-      </div>
-
-      <nav className="nav-menu d-none d-lg-block">
-        <ul>
-          <li className="active"><a href="#home" onClick={() => history.push("/")}>Home</a></li>
-          <li><a href="#link" onClick={() => history.push("/login")}>About</a></li>
-          <li><a href="#menu">Menu</a></li>
-          <li><a href="#specials">Specials</a></li>
-          <li><a href="#events">Events</a></li>
-          <li><a href="#chefs">Chefs</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-
-    </div>
-  </header>
+          <nav className="nav-menu d-none d-lg-block">
+            <ul>
+              <li>
+                <a href="#home" onClick={() => history.push("/")}>
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="#about" onClick={() => history.push("/")}>
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="#menu" onClick={() => history.push("/")}>
+                  Menu
+                </a>
+              </li>
+              <li>
+                <a href="#specials" onClick={() => history.push("/")}>
+                  Specials
+                </a>
+              </li>
+              <li>
+                <a href="#events" onClick={() => history.push("/")}>
+                  Events
+                </a>
+              </li>
+              <li>
+                <a href="#gallery">Gallery</a>
+              </li>
+              <li>
+                <a href="#contact">Contact</a>
+              </li>
+              <li>
+                <Breadcrumbs aria-label="breadcrumb">
+                  <Link color="inherit" to="/Sign-in" onClick={handleClick}>
+                    Sign in
+                  </Link>
+                  <Link
+                    color="inherit"
+                    href="/getting-started/installation/"
+                    onClick={handleClick}
+                  >
+                    Sign up
+                  </Link>
+                </Breadcrumbs>
+              </li>
+              <li class="book-a-table text-center">
+                <a href="#book-a-table">Book a table</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
 
       {/* <Navbar>
         <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
@@ -70,8 +115,6 @@ export default function Navigation(props) {
           </Form>
         </Navbar.Collapse>
       </Navbar> */}
-      
-      
     </div>
   );
 }

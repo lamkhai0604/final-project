@@ -1,5 +1,5 @@
 import React from "react";
-
+import ReactModal from 'react-modal';
 import "./About.css"
 
 export default function Cards() {
