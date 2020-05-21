@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory, Link } from "react-router-dom";
 import { Breadcrumbs } from "@material-ui/core";
-import "./Navbar.css";
+import "./Css/Navbar.css";
 
 export default function Navigation() {
   const history = useHistory();
@@ -38,7 +38,7 @@ export default function Navigation() {
           <nav className="nav-menu d-none d-lg-block">
             <ul>
               <li>
-                <a href="#home" onClick={() => history.push("/")}>
+                <a href="/" onClick={() => history.push("/")}>
                   Home
                 </a>
               </li>
@@ -58,11 +58,6 @@ export default function Navigation() {
                 </a>
               </li>
               <li>
-                <a href="#events" onClick={() => history.push("/")}>
-                  Events
-                </a>
-              </li>
-              <li>
                 <a href="#gallery">Gallery</a>
               </li>
               <li>
@@ -75,7 +70,7 @@ export default function Navigation() {
                   </Link>
                   <Link
                     color="inherit"
-                    href="/getting-started/installation/"
+                    to="Sign-up"
                     onClick={handleClick}
                   >
                     Sign up

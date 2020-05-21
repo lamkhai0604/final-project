@@ -100,6 +100,7 @@ ABOUT
 }
 
 .about .play-btn {
+  border: 0px solid white;
   width: 94px;
   height: 94px;
   background: radial-gradient(#ffb03b 50%, rgba(255, 176, 59, 0.4) 52%);
@@ -109,6 +110,7 @@ ABOUT
   left: calc(50% - 47px);
   top: calc(50% - 47px);
   overflow: hidden;
+  outline: none;
 }
 
 .about .play-btn::after {

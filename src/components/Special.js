@@ -1,5 +1,5 @@
 import React from 'react'
-import "./Special.css"
+import "./Css/Special.css"
 
 export default function Special() {
     return (
