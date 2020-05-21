@@ -1,24 +1,45 @@
-import React from 'react';
+import React from "react";
 import Banner from "./Banner";
 import About from "./About";
 import Menu from "./Menu";
 import Special from "./Special";
-// import Events from "./Events";
 import Gallery from "./Gallery";
 import ContactUs from "./ContactUs";
 import Footer from "./Footer";
+import Navigation from "./Navbar";
+import { useState } from "react";
+import ReactModal from "react-modal";
+import YouTube from "@u-wave/react-youtube";
 
 export default function Home() {
-    return (
-        <div>
-             <Banner />
-             <About />
-             <Menu />
-             <Special />
-             {/* <Events /> */}
-             <Gallery />
-             <ContactUs />
-             <Footer />
-        </div>
-    )
+  let [modal, setModal] = useState(false);
+
+  let openModal = () => {
+    setModal(true);
+  };
+
+  return (
+    <div>
+      <Navigation />
+      <Banner />
+      <About openModal={openModal} />
+      {/*Maybe put openmodal inside here, ReactModal below footer */}
+      <Menu />
+      <Special />
+      <Gallery />
+      <ContactUs />
+      <Footer />
+
+      <ReactModal
+        isOpen={modal}
+        style={{
+          overplay:{},
+          content: {},
+        }}
+        onRequestClose={() => setModal(false)}
+      >
+        <YouTube video="jDDaplaOz7Q" autoplay style={{width: '100%', height: '100%'}}/>
+      </ReactModal>
+    </div>
+  );
 }
