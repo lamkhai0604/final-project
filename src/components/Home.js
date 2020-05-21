@@ -11,6 +11,7 @@ import { useState } from "react";
 import ReactModal from "react-modal";
 import YouTube from "@u-wave/react-youtube";
 
+
 export default function Home() {
   let [modal, setModal] = useState(false);
 
@@ -18,18 +19,20 @@ export default function Home() {
     setModal(true);
   };
 
+
+
   return (
     <div>
       <Navigation />
       <Banner />
       <About openModal={openModal} />
-      {/*Maybe put openmodal inside here, ReactModal below footer */}
       <Menu />
       <Special />
       <Gallery />
       <ContactUs />
       <Footer />
-
+      
+      
       <ReactModal
         isOpen={modal}
         style={{

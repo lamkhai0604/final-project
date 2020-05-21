@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { Breadcrumbs } from "@material-ui/core";
 import "./Css/Navbar.css";
 
 export default function Navigation() {
+  let [background, setBackground] = useState("");
+  let [topGround, setTopGround] = useState("");
+
+  const onScroll = () => {
+    let newBackground = window.scrollY < 100 ? "" : "navbar-scrolled";
+    setBackground(newBackground);
+  };
+
+  const topScroll = () => {
+    let topScrolled =window.scrollY < 100 ? "" : "topbar-scrolled";
+    setTopGround(topScrolled);
+  }
+
+  useEffect(() => {
+    document.addEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener("scroll", topScroll);
+  }, []);
+
   const history = useHistory();
 
   function handleClick(event) {
@@ -15,7 +37,7 @@ export default function Navigation() {
     <div>
       <section
         id="topbar"
-        className="d-none d-lg-flex align-items-center fixed-top"
+        className={`d-none d-lg-flex align-items-center fixed-top ${topGround}`}
       >
         <div className="container text-right">
           <i className="icofont-phone"></i> +1 2345 6789 10
@@ -24,7 +46,10 @@ export default function Navigation() {
         </div>
       </section>
 
-      <header id="header" className="fixed-top d-flex align-items-center">
+      <header
+        id="header"
+        className={`fixed-top ${background} d-flex align-items-center`}
+      >
         <div class="container d-flex align-items-center">
           <div className="logo mr-auto">
             <h1 className="text-light">
@@ -68,11 +93,7 @@ export default function Navigation() {
                   <Link color="inherit" to="/Sign-in" onClick={handleClick}>
                     Sign in
                   </Link>
-                  <Link
-                    color="inherit"
-                    to="Sign-up"
-                    onClick={handleClick}
-                  >
+                  <Link color="inherit" to="Sign-up" onClick={handleClick}>
                     Sign up
                   </Link>
                 </Breadcrumbs>
