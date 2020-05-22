@@ -1,9 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap");
+
 .specials {
     overflow: hidden;
   }
   
   .specials .nav-tabs {
     border: 0;
+    
   }
   
   .specials .nav-link {
@@ -13,8 +17,10 @@
     color: #433f39;
     border-radius: 0;
     border-right: 2px solid #e8e7e4;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 15px;
+    outline: none;
+    font-family: Poppins;
   }
   
   .specials .nav-link:hover {
@@ -36,6 +42,7 @@
     font-weight: 600;
     margin-bottom: 20px;
     color: #433f39;
+    font-family: Satisfy;
   }
   
   .specials .details p {

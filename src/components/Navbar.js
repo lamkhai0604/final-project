@@ -9,12 +9,12 @@ export default function Navigation() {
   let [topGround, setTopGround] = useState("");
 
   const onScroll = () => {
-    let newBackground = window.scrollY < 100 ? "" : "navbar-scrolled";
+    let newBackground = window.scrollY < 150 ? "" : "navbar-scrolled";
     setBackground(newBackground);
   };
 
   const topScroll = () => {
-    let topScrolled =window.scrollY < 100 ? "" : "topbar-scrolled";
+    let topScrolled =window.scrollY < 150 ? "" : "topbar-scrolled";
     setTopGround(topScrolled);
   }
 
