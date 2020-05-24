@@ -23,7 +23,7 @@ useEffect(() => {
               Check our tasty <span>Menu</span>
             </h2>
           </div>
-{/* 
+
           <div className="row">
             <div className="col-lg-12 d-flex justify-content-center">
               <ul id="menu-flters">
@@ -35,7 +35,7 @@ useEffect(() => {
                 <li className={`${menu}`}>Specialty</li>
               </ul>
             </div>
-          </div> */}
+          </div>
 
           <div className="row menu-container">
             <div className="col-lg-6 menu-item filter-starters">
