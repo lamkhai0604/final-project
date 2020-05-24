@@ -1,4 +1,5 @@
 import React from 'react';
+import Iframe from 'react-iframe';
 import "./Css/ContactUs.css"
 
 export default function ContactUs() {
@@ -13,9 +14,16 @@ export default function ContactUs() {
         </div>
       </div>
 
-      {/* <div className="map">
-        <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
-      </div> */}
+      <div>
+        <Iframe 
+        className="map"
+        url="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.6367446533663!2d106.70533511462239!3d10.762453792331067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f693a5128df%3A0x76966b260234240b!2zQ29wYWMgU3F1YXJlLCAxMiDEkMaw4budbmcgVMO0biDEkOG6o24sIFBoxrDhu51uZyAxMywgUXXhuq1uIDQsIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2sbg!4v1590298486992!5m2!1svi!2sbg" 
+        frameborder="0" 
+        allowfullscreen="" 
+        aria-hidden="false" 
+        tabindex="0">
+        </Iframe>
+      </div>
 
       <div className="container mt-5">
 
@@ -24,7 +32,7 @@ export default function ContactUs() {
             <div className="col-lg-3 col-md-6 info">
               <i className="icofont-google-map" />
               <h4>Location:</h4>
-              <p>12 Ton Dan Street district 4, ward 14</p>
+              <p>12 Ton Dan Street district 4, ward 13</p>
             </div>
 
             <div className="col-lg-3 col-md-6 info mt-4 mt-lg-0">

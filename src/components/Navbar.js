@@ -28,10 +28,9 @@ export default function Navigation() {
 
   const history = useHistory();
 
-  function handleClick(event) {
-    // event.preventDefault();
-    console.info("You clicked a breadcrumb.");
-  }
+  // function handleClick(event) {
+  //   console.info("You clicked a breadcrumb.");
+  // }
 
   return (
     <div>
@@ -90,47 +89,21 @@ export default function Navigation() {
               </li>
               <li>
                 <Breadcrumbs aria-label="breadcrumb">
-                  <Link color="inherit" to="/Sign-in" onClick={handleClick}>
+                  <Link color="inherit" to="/Sign-in">
                     Sign in
                   </Link>
-                  <Link color="inherit" to="Sign-up" onClick={handleClick}>
+                  <Link color="inherit" to="Sign-up">
                     Sign up
                   </Link>
                 </Breadcrumbs>
               </li>
               <li class="book-a-table text-center">
-                <a href="#book-a-table">Book a table</a>
+                <Link to="/Book-table">Book a table</Link>
               </li>
             </ul>
           </nav>
         </div>
       </header>
-
-      {/* <Navbar>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link href="#home" onClick={() => history.push("/")}>Home</Nav.Link>
-            <Nav.Link href="#link" onClick={() => history.push("/login")}>Link</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-          <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-success">Search</Button>
-          </Form>
-        </Navbar.Collapse>
-      </Navbar> */}
     </div>
   );
 }

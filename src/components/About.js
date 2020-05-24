@@ -1,11 +1,7 @@
 import React from "react";
 import "./Css/About.css";
 
-
-
 export default function Cards(props) {
-
-
   return (
     <div>
       <section id="about" className="about">
@@ -17,11 +13,10 @@ export default function Cards(props) {
             >
               <button
                 onClick={() => props.openModal()}
-                className="venobox play-btn mb-4"
+                className="play-btn mb-4"
                 data-vbtype="video"
                 data-autoplay="true"
-              >
-              </button>
+              ></button>
             </div>
             <div className="col-lg-7 d-flex flex-column justify-content-center align-items-stretch">
               <div className="content">
@@ -111,14 +106,14 @@ export default function Cards(props) {
             </div>
           </div>
         </div>
-      </section>  
+      </section>
     </div>
   );
 }
 
-
-
-{/* openModal={openModal} */}
+{
+  /* openModal={openModal} */
+}
 // display: "flex",
 // justifyContent: "center",
 // position: "relative",

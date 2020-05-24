@@ -4,8 +4,9 @@ import Zoom from "react-reveal/Zoom";
 import Bounce from "react-reveal/Bounce";
 import Rotate from 'react-reveal/Rotate';
 import "./Css/Banner.css";
+import { Link } from "react-router-dom";
 
-export default function Banner() {
+export default function Banner(props) {
   return (
     <div>
       <Carousel id="hero">
@@ -41,9 +42,9 @@ export default function Banner() {
                       <a href="#menu" className="btn-menu">
                         Our Menu
                       </a>
-                      <a href="#book-a-table" className="btn-book">
+                      <Link to="/Book-table" className="btn-book">
                         Book a Table
-                      </a>
+                      </Link>
                     </div>
                   </Zoom>
                 </div>
@@ -83,12 +84,9 @@ export default function Banner() {
                   >
                     Our Menu
                   </a>
-                  <a
-                    href="#book-a-table"
-                    className="btn-book animated fadeInUp scrollto"
-                  >
-                    Book a Table
-                  </a>
+                  <Link to="/Book-table" className="btn-book">
+                        Book a Table
+                      </Link>
                 </div>
                 </Bounce>
               </div>
@@ -129,12 +127,9 @@ export default function Banner() {
                   >
                     Our Menu
                   </a>
-                  <a
-                    href="#book-a-table"
-                    className="btn-book"
-                  >
-                    Book a Table
-                  </a>
+                  <Link to="/Book-table" className="btn-book">
+                        Book a Table
+                      </Link>
                 </div>
                 </Rotate>
               </div>

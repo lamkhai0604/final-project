@@ -1,7 +1,7 @@
 import React from "react";
 import "./Css/Gallery.css";
 
-export default function Gallery() {
+export default function Gallery(props) {
   return (
     <div>
       <section id="gallery" className="gallery">
@@ -21,7 +21,7 @@ export default function Gallery() {
               <div className="gallery-item">
                 <a
                   href="assets/gallery-1.jpg"
-                  className="venobox"
+                  onClick={() => props.openModal()}
                   data-gall="gallery-item"
                 >
                   <img
