@@ -1,8 +1,7 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "date-fns";
 import Grid from "@material-ui/core/Grid";
 import DateFnsUtils from "@date-io/date-fns";
-import {useState} from "react"
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
@@ -10,8 +9,11 @@ import {
 } from "@material-ui/pickers";
 import { Form, Button } from "react-bootstrap";
 import "../components/Css/BookTable.css";
+import socketIOClient from "socket.io-client";
+const socket = socketIOClient("http://localhost:5000");
 
 export default function BookTable() {
+  const [submit, setSubmit] = useState("")
   const [selectedDate, setSelectedDate] = useState(
     new Date("2014-08-18T21:11:54")
   );
@@ -19,6 +21,21 @@ export default function BookTable() {
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
+
+  const handleChange = (e) => {
+    setSubmit(e.target.value)
+  }
+
+  const submitForm = (e) => {
+    e.preventDefault()
+    socket.emit("submit", submit)
+  }
+
+  useEffect(() => {
+    socket.on("messages", (msg) => {
+      console.log(msg);
+    })
+  }, []);
 
   return (
     <div>
@@ -72,7 +89,8 @@ export default function BookTable() {
                 />
               </Grid>
             </MuiPickersUtilsProvider>
-            <Form>
+
+            <Form onChange={handleChange} onSubmit={submitForm}>
               <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Label>Your Email</Form.Label>
                 <Form.Control type="email" placeholder="name@example.com" />
@@ -89,10 +107,10 @@ export default function BookTable() {
                 <Form.Label>Your Message</Form.Label>
                 <Form.Control as="textarea" rows="3" />
               </Form.Group>
-            </Form>
             <Button variant="warning" type="submit">
               Submit
             </Button>
+            </Form>
           </div>
         </div>
       </section>
