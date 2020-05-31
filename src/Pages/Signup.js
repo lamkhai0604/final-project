@@ -68,17 +68,22 @@ const SignUp = ({ history: { push } }) => {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form
+          onChange={handleChange}
+          onSubmit={handleSubmit}
+          className={classes.form}
+          noValidate
+        >
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
                 autoComplete="fname"
-                name="firstName"
+                name="name"
                 variant="outlined"
                 required
                 fullWidth
                 id="firstName"
-                label="First Name"
+                label="Full Name"
                 autoFocus
                 onChange={onChange}
               />
@@ -127,6 +132,9 @@ const SignUp = ({ history: { push } }) => {
               />
             </Grid>
           </Grid>
+          <a href={`{$process.env.REACT_APP_SERVER}/auth/google}`}>
+            Login with Google
+          </a>
           <Button
             onClick={() => handleSignup()}
             fullWidth
