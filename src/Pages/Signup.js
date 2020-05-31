@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -34,9 +34,25 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const classes = useStyles();
-  // const onChange = () => {
+  const [user, setUser] = useState({})
 
+  const handleChange = (e) => {
+    setUser({...user, [e.target.name]: e.target.value})
+  }
   
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const res = await fetch(process.env.REACT_APP_SERVER + "/user", {
+      method: "POST",
+     headers:{
+       "Content-Type": "application/json",
+     },
+     body: JSON.stringify(user)
+    })
+    if(res.status === 400){
+      alert("sign up success")
+    }
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -48,31 +64,21 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form onChange={handleChange} onSubmit={handleSubmit}className={classes.form} noValidate>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
                 autoComplete="fname"
-                name="firstName"
+                name="name"
                 variant="outlined"
                 required
                 fullWidth
                 id="firstName"
-                label="First Name"
+                label="Full Name"
                 autoFocus
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-              />
-            </Grid>
+  
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -103,6 +109,7 @@ export default function SignUp() {
               />
             </Grid>
           </Grid>
+          <a href={`{$process.env.REACT_APP_SERVER}/auth/google}`}>Login with Google</a>
           <Button
             type="submit"
             fullWidth

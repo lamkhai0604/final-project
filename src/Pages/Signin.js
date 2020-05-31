@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -35,6 +35,27 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles();
+  const [ formInput, setFormInput ] = useState({})
+  const [user, setUser] = useState({})
+
+  const handleChange = (e) => {
+    setFormInput({...formInput, [e.target.name] : e.target.value })
+    setUser({...user, [e.target.name]: e.target.value})
+  }
+
+  const handleSubmit = async (e) => {
+   e.preventDefault()
+    const res = await fetch(process.env.REACT_APP_SERVER + "/user", {
+      method: "POST",
+     headers:{
+       "Content-Type": "application/json",
+     },
+     body: JSON.stringify(user)
+    })
+    if(res.status === 400){
+      alert("Sign in success")
+    }
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -46,7 +67,11 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form 
+        className={classes.form}
+        onSubmit={handleSubmit} 
+        onChange={handleChange} 
+        noValidate>
           <TextField
             variant="outlined"
             margin="normal"

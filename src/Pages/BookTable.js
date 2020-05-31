@@ -9,8 +9,8 @@ import {
 } from "@material-ui/pickers";
 import { Form, Button } from "react-bootstrap";
 import "../components/Css/BookTable.css";
-import socketIOClient from "socket.io-client";
-const socket = socketIOClient("http://localhost:5000");
+// import socketIOClient from "socket.io-client";
+// const socket = socketIOClient("http://localhost:5000");
 
 export default function BookTable() {
   const [submit, setSubmit] = useState("")
@@ -28,14 +28,14 @@ export default function BookTable() {
 
   const submitForm = (e) => {
     e.preventDefault()
-    socket.emit("submit", submit)
+    // socket.emit("submit", submit)
   }
 
-  useEffect(() => {
-    socket.on("messages", (msg) => {
-      console.log(msg);
-    })
-  }, []);
+  // useEffect(() => {
+  //   socket.on("messages", (msg) => {
+  //    console.log(msg);
+  //    })
+  // }, []);
 
   return (
     <div>
