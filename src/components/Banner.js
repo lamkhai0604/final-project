@@ -2,11 +2,12 @@ import React from "react";
 import { Carousel } from "react-bootstrap";
 import Zoom from "react-reveal/Zoom";
 import Bounce from "react-reveal/Bounce";
-import Rotate from 'react-reveal/Rotate';
+import Rotate from "react-reveal/Rotate";
 import "./Css/Banner.css";
 import { Link } from "react-router-dom";
 
 export default function Banner(props) {
+  const isAuthenticated = localStorage.getItem("user");
   return (
     <div>
       <Carousel id="hero">
@@ -42,9 +43,11 @@ export default function Banner(props) {
                       <a href="#menu" className="btn-menu">
                         Our Menu
                       </a>
-                      <Link to="/Book-table" className="btn-book">
-                        Book a Table
-                      </Link>
+                      {isAuthenticated && (
+                        <Link to="/Book-table" className="btn-book">
+                          Book a Table
+                        </Link>
+                      )}
                     </div>
                   </Zoom>
                 </div>
@@ -65,35 +68,37 @@ export default function Banner(props) {
             <div className="carousel-container">
               <div className="carousel-content">
                 <Bounce top cascade>
-                <h2>Lorem Ipsum Dolor</h2>
+                  <h2>Lorem Ipsum Dolor</h2>
                 </Bounce>
-              <Bounce right cascade>
-                <p>
-                  Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut
-                  et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem
-                  mollitia ut. Similique ea voluptatem. Esse doloremque
-                  accusamus repellendus deleniti vel. Minus et tempore modi
-                  architecto.
-                </p>
+                <Bounce right cascade>
+                  <p>
+                    Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea
+                    ut et est quaerat sequi nihil ut aliquam. Occaecati alias
+                    dolorem mollitia ut. Similique ea voluptatem. Esse
+                    doloremque accusamus repellendus deleniti vel. Minus et
+                    tempore modi architecto.
+                  </p>
                 </Bounce>
                 <Bounce left cascade>
-                <div>
-                  <a
-                    href="#menu"
-                    className="btn-menu animated fadeInUp scrollto"
-                  >
-                    Our Menu
-                  </a>
-                  <Link to="/Book-table" className="btn-book">
+                  <div>
+                    <a
+                      href="#menu"
+                      className="btn-menu animated fadeInUp scrollto"
+                    >
+                      Our Menu
+                    </a>
+                    {isAuthenticated && (
+                      <Link to="/Book-table" className="btn-book">
                         Book a Table
                       </Link>
-                </div>
+                    )}
+                  </div>
                 </Bounce>
               </div>
             </div>
           </Carousel.Caption>
         </Carousel.Item>
-           {/*---------
+        {/*---------
             BANNER 3
          ------------*/}
         <Carousel.Item>
@@ -106,31 +111,28 @@ export default function Banner(props) {
             <div className="carousel-container">
               <div className="carousel-content">
                 <Rotate cascade>
-                <h2>
-                  Sequi ea ut et est quaerat
-                </h2>
+                  <h2>Sequi ea ut et est quaerat</h2>
                 </Rotate>
                 <Rotate right cascade>
-                <p>
-                  Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut
-                  et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem
-                  mollitia ut. Similique ea voluptatem. Esse doloremque
-                  accusamus repellendus deleniti vel. Minus et tempore modi
-                  architecto.
-                </p>
+                  <p>
+                    Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea
+                    ut et est quaerat sequi nihil ut aliquam. Occaecati alias
+                    dolorem mollitia ut. Similique ea voluptatem. Esse
+                    doloremque accusamus repellendus deleniti vel. Minus et
+                    tempore modi architecto.
+                  </p>
                 </Rotate>
                 <Rotate left cascade>
-                <div>
-                  <a
-                    href="#menu"
-                    className="btn-menu"
-                  >
-                    Our Menu
-                  </a>
-                  <Link to="/Book-table" className="btn-book">
+                  <div>
+                    <a href="#menu" className="btn-menu">
+                      Our Menu
+                    </a>
+                    {isAuthenticated && (
+                      <Link to="/Book-table" className="btn-book">
                         Book a Table
                       </Link>
-                </div>
+                    )}
+                  </div>
                 </Rotate>
               </div>
             </div>

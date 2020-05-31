@@ -14,9 +14,9 @@ export default function Navigation() {
   };
 
   const topScroll = () => {
-    let topScrolled =window.scrollY < 150 ? "" : "topbar-scrolled";
+    let topScrolled = window.scrollY < 150 ? "" : "topbar-scrolled";
     setTopGround(topScrolled);
-  }
+  };
 
   useEffect(() => {
     document.addEventListener("scroll", onScroll);
@@ -28,10 +28,27 @@ export default function Navigation() {
 
   const history = useHistory();
 
-const handleChange = (e) => {
+  const isAuthenticated = localStorage.getItem("user");
 
-}
-
+  const displayAuthNav = () => {
+    if (!isAuthenticated) {
+      return (
+        <Breadcrumbs aria-label="breadcrumb">
+          <Link color="inherit" to="/Sign-in">
+            Sign in
+          </Link>
+          <Link color="inherit" to="Sign-up">
+            Sign up
+          </Link>
+        </Breadcrumbs>
+      );
+    }
+    return (
+      <Link color="inherit" onClick={() => localStorage.clear()}>
+        Logout
+      </Link>
+    );
+  };
   return (
     <div>
       <section
@@ -87,19 +104,12 @@ const handleChange = (e) => {
               <li>
                 <a href="#contact">Contact</a>
               </li>
-              <li>
-                <Breadcrumbs aria-label="breadcrumb">
-                  <Link color="inherit" to="/Sign-in">
-                    Sign in
-                  </Link>
-                  <Link color="inherit" to="Sign-up">
-                    Sign up
-                  </Link>
-                </Breadcrumbs>
-              </li>
-              <li class="book-a-table text-center">
-                <Link to="/Book-table">Book a table</Link>
-              </li>
+              <li>{displayAuthNav()}</li>
+              {isAuthenticated && (
+                <li class="book-a-table text-center">
+                  <Link to="/Book-table">Book a table</Link>
+                </li>
+              )}
             </ul>
           </nav>
         </div>

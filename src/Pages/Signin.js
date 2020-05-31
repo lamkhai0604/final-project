@@ -1,22 +1,24 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import React, { useState } from "react";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import Link from "@material-ui/core/Link";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
 
+import { withRouter } from "react-router-dom";
+import axios from "axios";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
   },
   avatar: {
     fontSize: "30px",
@@ -25,22 +27,38 @@ const useStyles = makeStyles((theme) => ({
     color: "#ffb03b"
   },
   form: {
-    width: '100%',
-    marginTop: theme.spacing(1),
+    width: "100%",
+    marginTop: theme.spacing(1)
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
+    margin: theme.spacing(3, 0, 2)
+  }
 }));
 
-export default function SignIn() {
+const SignIn = ({ history: { push } }) => {
   const classes = useStyles();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: ""
+  });
+
+  const onChange = e =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const handleSignIn = async () => {
+    const {
+      data: { user }
+    } = await axios.post("/auth/login", formData);
+
+    localStorage.setItem("user", JSON.stringify(user));
+    return push("/");
+  };
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-      <a href="/" className={classes.avatar}>
+        <a href="/" className={classes.avatar}>
           Delicious
         </a>
         <Typography component="h1" variant="h5">
@@ -57,6 +75,7 @@ export default function SignIn() {
             name="email"
             autoComplete="email"
             autoFocus
+            onChange={onChange}
           />
           <TextField
             variant="outlined"
@@ -68,13 +87,14 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={onChange}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           />
           <Button
-            type="submit"
+            onClick={handleSignIn}
             fullWidth
             variant="contained"
             color="primary"
@@ -98,4 +118,6 @@ export default function SignIn() {
       </div>
     </Container>
   );
-}
+};
+
+export default withRouter(SignIn);
