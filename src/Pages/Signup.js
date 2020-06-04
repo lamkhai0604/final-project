@@ -69,8 +69,6 @@ const SignUp = ({ history: { push } }) => {
           Sign up
         </Typography>
         <form
-          onChange={handleChange}
-          onSubmit={handleSubmit}
           className={classes.form}
           noValidate
         >
