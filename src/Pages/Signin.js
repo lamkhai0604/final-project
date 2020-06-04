@@ -66,8 +66,6 @@ const SignIn = ({ history: { push } }) => {
         </Typography>
         <form 
         className={classes.form}
-        onSubmit={handleSubmit} 
-        onChange={handleChange} 
         noValidate>
           <TextField
             variant="outlined"
