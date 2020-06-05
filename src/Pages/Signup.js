@@ -86,7 +86,7 @@ const SignUp = ({ history: { push } }) => {
                 onChange={onChange}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            {/* <Grid item xs={12} sm={6}>
               <TextField
                 variant="outlined"
                 required
@@ -97,7 +97,7 @@ const SignUp = ({ history: { push } }) => {
                 autoComplete="lname"
                 onChange={onChange}
               />
-            </Grid>
+            </Grid> */}
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
